@@ -1,11 +1,12 @@
+from django.contrib import admin
 from django.urls import path
-from . import views
-
+from students.views import home, student_list, student_detail, about, students_by_class, teacher_list
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('students/', views.student_list, name='student_list'),
-    path('students/<int:id>/', views.student_detail, name='student_detail'),
-    path('about/', views.about, name='about'),
-    path('teachers/', views.teacher_list, name='teacher_list'),
-    path('courses/', views.course_list, name='course_list'),
+    path('admin/', admin.site.urls),
+    path('', home, name='home'),
+    path('students/', student_list, name='student_list'),
+    path('students/<int:id>/', student_detail, name='student_detail'),
+    path('students/classe/<str:classe>/', students_by_class, name='students_by_class'),
+    path('teachers/', teacher_list, name='teacher_list'),
+    path('about/', about, name='about'),
 ]
